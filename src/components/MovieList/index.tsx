@@ -9,8 +9,7 @@ import injusticeImg from '../../assets/injustice.jpg';
 
 type Movie = {
   id: string; //
-  title: string;
-  poster_path: string;
+  results: [title: string, poster_path: string];
 };
 
 export default function MovieList() {
@@ -20,12 +19,16 @@ export default function MovieList() {
     api.get<Movie[]>('').then((res: any) => {
       setMovie(res.data);
     });
+    console.log(movie);
   }, []);
 
   return (
     <div className={styles.movieListWrapper}>
+      {movie.map((movie) => {
+        <div>{movie.results[0]}</div>;
+      })}
       <div className={styles.movieWrapper}>
-        <div className={styles.imageBox}>
+        <div>
           <img className={styles.imageStyle} src={injusticeImg} alt='' />
         </div>
         <p className={styles.title}>Venom</p>
