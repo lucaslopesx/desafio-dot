@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import { IoHeart } from 'react-icons/io5';
 import { VscStarFull } from 'react-icons/vsc';
-import api from '../../service/api';
 
-import venomImg from '../../assets/venom.jpg';
-import injusticeImg from '../../assets/injustice.jpg';
 
 type Movie = {
   title: string;
