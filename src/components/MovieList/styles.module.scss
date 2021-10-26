@@ -1,14 +1,18 @@
 .movieListWrapper {
-  max-width: 200px;
+  display: flex;
+  flex-direction: columns;
+  flex-flow: wrap;
   padding: 10px;
 }
 
 .movieWrapper {
+  position: relative;
   display: grid;
+  max-width: 200px;
+  margin: 10px;
   border: 2px solid gray;
-  grid-template-columns: auto;
   text-align: center;
-  // grid-template-areas:
+  // grid-template-areas:relative
   //   'imagem'
   //   'title rating'
   //   'genre'
@@ -27,6 +31,9 @@
   }
 
   .add {
+    align-self: flex-end;
+    width: 100%;
+    bottom: 0;
     height: 40px;
     border: 1px solid gray;
     background: #6558f5;

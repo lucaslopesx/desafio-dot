@@ -8,42 +8,55 @@ import venomImg from '../../assets/venom.jpg';
 import injusticeImg from '../../assets/injustice.jpg';
 
 type Movie = {
-  id: string; //
-  results: [title: string, poster_path: string];
+  title: string;
+  poster_path: string;
 };
 
 export default function MovieList() {
   const [movie, setMovie] = useState<Movie[]>([]);
 
+  const getMovieRequest = async () => {
+    const url =
+      'https://api.themoviedb.org/3/trending/all/day?api_key=dc35ea9a8f93b99ec2a67ce9ce0238b2';
+
+    const response = await fetch(url);
+    const responseJSON = await response.json();
+
+    console.log(responseJSON.results);
+    setMovie(responseJSON.results);
+  };
+
   useEffect(() => {
-    api.get<Movie[]>('').then((res: any) => {
-      setMovie(res.data);
-    });
-    console.log(movie);
+    getMovieRequest();
   }, []);
 
   return (
     <div className={styles.movieListWrapper}>
       {movie.map((movie) => {
-        <div>{movie.results[0]}</div>;
+        return (
+          <div className={styles.movieWrapper}>
+            <div>
+              <img
+                className={styles.imageStyle}
+                src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                alt=''
+              />
+            </div>
+            <p className={styles.title}>{movie.title}</p>
+            <div className={styles.actions}>
+              <a href='#'>
+                <VscStarFull size='22' />
+              </a>
+              <a href='#'>
+                <IoHeart size='22' />
+              </a>
+            </div>
+            <p className={styles.genre}>Genre</p>
+            <p className={styles.price}>R$9.99</p>
+            <button className={styles.add}>Adicionar</button>
+          </div>
+        );
       })}
-      <div className={styles.movieWrapper}>
-        <div>
-          <img className={styles.imageStyle} src={injusticeImg} alt='' />
-        </div>
-        <p className={styles.title}>Venom</p>
-        <div className={styles.actions}>
-          <a href='#'>
-            <VscStarFull size='22' />
-          </a>
-          <a href='#'>
-            <IoHeart size='22' />
-          </a>
-        </div>
-        <p className={styles.genre}>Genre</p>
-        <p className={styles.price}>R$9.99</p>
-        <button className={styles.add}>Adicionar</button>
-      </div>
     </div>
   );
 }
