@@ -5,12 +5,12 @@ import styles from './App.module.scss';
 
 function App() {
   return (
-    <>
+    <div className={styles.container}>
       <Header />
       <main className={styles.contentWrapper}>
         <MovieList />
       </main>
-    </>
+    </div>
   );
 }
 

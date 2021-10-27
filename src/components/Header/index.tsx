@@ -4,7 +4,7 @@ import { VscSearch } from 'react-icons/vsc';
 import { IoCart, IoHeart } from 'react-icons/io5';
 import logo from '../../assets/logo.svg';
 
-export function Header() {
+export function Header(props: any) {
   let searchIconStyled = { paddingLeft: '8px' };
   return (
     <header className={styles.header}>
