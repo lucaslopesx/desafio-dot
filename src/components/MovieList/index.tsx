@@ -27,10 +27,6 @@ export default function MovieList() {
     getMovieRequest(page);
   }, [page]);
 
-  function pageUp() {
-    let input = document.getElementById('input-num');
-  }
-
   return (
     <>
       <div className={styles.pageSearch}>
